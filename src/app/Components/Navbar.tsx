@@ -49,33 +49,32 @@ export default function Navbar() {
 
         {/* Desktop Menu */}
         <motion.ul className="hidden md:flex space-x-8">
-  {navLinks.map((link) => (
-    <motion.li
-      key={link.name}
-      className="relative cursor-pointer text-white"
-      initial="rest"
-      whileHover="hover"
-      animate="rest"
-      variants={{
-        rest: { color: "#fff" },
-        hover: { color: "#22C55E" },
-      }}
-    >
-      <Link href={link.href} className="relative z-10">
-        {link.name}
-      </Link>
-      <motion.div
-        className="absolute left-0 bottom-0 h-0.5 bg-green-500"
-        variants={{
-          rest: { width: 0 },
-          hover: { width: "100%" },
-        }}
-        transition={{ duration: 0.3, ease: "easeInOut" }}
-      />
-    </motion.li>
-  ))}
-</motion.ul>
-
+          {navLinks.map((link) => (
+            <motion.li
+              key={link.name}
+              className="relative cursor-pointer text-white"
+              initial="rest"
+              whileHover="hover"
+              animate="rest"
+              variants={{
+                rest: { color: "#fff" },
+                hover: { color: "#22C55E" },
+              }}
+            >
+              <Link href={link.href} className="relative z-10">
+                {link.name}
+              </Link>
+              <motion.div
+                className="absolute left-0 bottom-0 h-0.5 bg-green-500"
+                variants={{
+                  rest: { width: 0 },
+                  hover: { width: "100%" },
+                }}
+                transition={{ duration: 0.3, ease: "easeInOut" }}
+              />
+            </motion.li>
+          ))}
+        </motion.ul>
 
         {/* Mobile Hamburger */}
         <button
@@ -138,14 +137,14 @@ export default function Navbar() {
                 }}
                 className="border-b border-gray-950 text-white"
               >
-                <Link href={link.href} passHref>
-                  <motion.a
-                    className="block px-4 py-3 hover:bg-green-600"
-                    onClick={() => setIsOpen(false)}
-                    whileTap={{ scale: 0.95 }}
-                  >
+                <Link
+                  href={link.href}
+                  className="block px-4 py-3 hover:bg-green-600"
+                  onClick={() => setIsOpen(false)}
+                >
+                  <motion.span whileTap={{ scale: 0.95 }}>
                     {link.name}
-                  </motion.a>
+                  </motion.span>
                 </Link>
               </motion.li>
             ))}

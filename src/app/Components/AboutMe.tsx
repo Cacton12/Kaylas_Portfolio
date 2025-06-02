@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 
 export default function AboutMe() {
   return (
-    <section id="about" className="bg-black py-20 text-green-100">
+    <section id="about" className="bg-black py-20 px-4 text-green-100 border-b-2">
       <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-12 items-stretch">
         {/* Left side - About Me and My Mission side by side */}
         <motion.div

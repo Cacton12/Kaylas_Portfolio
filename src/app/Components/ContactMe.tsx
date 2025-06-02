@@ -31,7 +31,7 @@ export default function ContactMe() {
           whileInView={{ opacity: 1 }}
           transition={{ delay: 0.2, duration: 0.5 }}
         >
-          I'd love to connect! Whether it's about tech, projects, or opportunities — feel free to reach out.
+          I&apos;d love to connect! Whether it&apos;s about tech, projects, or opportunities — feel free to reach out.
         </motion.p>
 
         <motion.a

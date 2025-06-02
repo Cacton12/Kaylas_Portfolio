@@ -43,6 +43,7 @@ export default function Navbar() {
             whileHover={{ scale: 1.1, rotate: 2 }}
             transition={{ type: "spring", stiffness: 300 }}
           >
+            
             <span className="cedarville-cursive">Kayla Richard</span>
           </motion.div>
         </Link>

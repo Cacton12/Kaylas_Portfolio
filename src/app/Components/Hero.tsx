@@ -10,17 +10,12 @@ export default function Hero() {
     >
       {/* Background image container */}
       <div className="absolute inset-0 z-0">
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.8 }}
+         <div
             className="absolute inset-0 bg-cover bg-center"
             style={{
               backgroundImage: `url(/Images/aerial-view-2604483.webp)`,
-            }}
-          />
-
+            }}>
+          </div>
         {/* Optional: add a dark overlay */}
         <div className="absolute inset-0 bg-black opacity-50" />
       </div>
@@ -28,9 +23,9 @@ export default function Hero() {
       {/* Foreground content */}
         <motion.div
         className="relative z-10"
-        initial={{ x: -150, opacity: 0 }}
+        initial={{ x: -50, opacity: 0 }}
         animate={{ x: 0, opacity: 1 }}
-        transition={{ duration: 1.2, ease: "easeOut" }}
+        transition={{ duration: 1, ease: "easeOut" }}
         >
         <h2 className="text-5xl md:text-7xl mb-6">
             Hello, I’m <span className="text-green-500">Kayla Richard</span>

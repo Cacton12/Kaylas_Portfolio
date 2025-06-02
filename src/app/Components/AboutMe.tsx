@@ -10,14 +10,14 @@ export default function AboutMe() {
         <motion.div
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, ease: "easeOut" }}
+          transition={{ duration: 1, ease: "easeOut" }}
           className="md:col-span-2 grid grid-cols-1 md:grid-cols-2 gap-8"
         >
           {/* About Me Section */}
           <motion.div
-            initial={{ opacity: 0, x: -40 }}
+            initial={{ opacity: 0, x: -15 }}
             whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8, delay: 0.1 }}
+            transition={{ duration: 1 }}
           >
             <h2 className="text-3xl md:text-4xl font-bold mb-4 border-b-4 border-green-600 inline-block pb-2">
               About Me
@@ -35,9 +35,9 @@ export default function AboutMe() {
 
           {/* My Mission Section */}
           <motion.div
-            initial={{ opacity: 0, x: 40 }}
+            initial={{ opacity: 0, x: 15 }}
             whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
+            transition={{ duration: 0.8 }}
           >
             <h2 className="text-3xl md:text-4xl font-bold mb-4 border-b-4 border-green-600 inline-block pb-2">
               My Mission

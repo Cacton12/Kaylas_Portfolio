@@ -44,7 +44,7 @@ export default function Navbar() {
             transition={{ type: "spring", stiffness: 300 }}
           >
             
-            <span className="cedarville-cursive">Kayla Richard</span>
+            Kayla Richard
           </motion.div>
         </Link>
 

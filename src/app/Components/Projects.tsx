@@ -1,73 +1,116 @@
 'use client';
 
 import { motion, Variants } from 'framer-motion';
+import { useState } from 'react';
+import Modal from './Smallstuff/modal';
 
 interface Project {
   title: string;
-  description: string;
+  description: string; // short summary, for modal
+  details: string;     // longer details, for cards
+  image: string;
 }
 
 const projects: Project[] = [
   {
     title: 'Forest Health Monitor',
-    description: 'A web app to track forest health metrics using remote sensing data.',
+    description:
+      'This project uses satellite imagery and sensor data to provide forest managers with timely health reports and alerts about potential issues like pest outbreaks or drought stress.',
+    details: 'A web app to track forest health metrics using remote sensing data.',
+    image: '/Images/timber-harvester-3790865.jpg',
   },
   {
     title: 'Biodiversity Tracker',
-    description: 'Mobile app for citizen scientists to log species sightings.',
+    description:
+      'A user-friendly mobile app designed for citizen scientists to easily log and track species sightings, contributing to a growing database for biodiversity research.',
+    details: 'Mobile app for citizen scientists to log species sightings.',
+    image: '/Images/forestry-6596153.jpg',
   },
   {
     title: 'Trail Restoration Planner',
-    description: 'Tool to plan and visualize restoration projects on hiking trails.',
+    description:
+      'This tool helps conservationists plan restoration projects by visualizing trail conditions, mapping repair tasks, and estimating resource needs.',
+    details: 'Tool to plan and visualize restoration projects on hiking trails.',
+    image: '/Images/forest-5441466.jpg',
   },
-  // Add more projects as needed
 ];
 
+
 export default function ProjectsTiltFade() {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [selectedProject, setSelectedProject] = useState<Project | null>(null);
+
+  const handleOpenModal = (project: Project) => {
+    setSelectedProject(project);
+    setIsModalOpen(true);
+  };
+
   return (
-    <section style={container}>
-        <h2 className='text-4xl font-bold mx-auto'>My <span className='text-green-600'>Projects</span></h2>
-      {projects.map((project, i) => (
-        <ProjectCard key={project.title} project={project} i={i} />
-      ))}
+    <section className="max-w-5xl mx-auto mt-12 px-4 flex flex-col gap-10 bg-black rounded-xl pb-10 overflow-hidden">
+      <h2 className="text-4xl font-bold text-center text-white">
+        My <span className="text-green-600">Projects</span>
+      </h2>
+      <div className="grid sm:grid-cols-1 md:grid-cols-2 gap-8">
+        {projects.map((project, i) => (
+          <motion.div
+            key={project.title}
+            className={`relative rounded-2xl border-4 cursor-pointer shadow-lg overflow-hidden h-72 flex items-end ${
+              projects.length % 2 !== 0 && i === projects.length - 1 ? 'md:col-span-2' : ''
+            }`}
+            initial="offscreen"
+            whileInView="onscreen"
+            variants={cardVariants}
+            custom={i}
+            whileHover={{
+              rotateX: 5,
+              rotateY: 10,
+              scale: 1.05,
+              transition: { duration: 0.3 },
+            }}
+            onClick={() => handleOpenModal(project)}
+          >
+            {/* Background Image */}
+            <div
+              className="absolute inset-0 bg-cover bg-center opacity-40"
+              style={{ backgroundImage: `url(${project.image})` }}
+            ></div>
+
+            {/* Overlay Content: show details here */}
+            <div className="relative z-10 bg-black/60 backdrop-blur-md p-4 w-full">
+              <h3 className="text-2xl font-bold text-white m-0">{project.title}</h3>
+              <p className="mt-2 text-white text-sm leading-relaxed">{project.details}</p> {/* details */}
+            </div>
+          </motion.div>
+        ))}
+      </div>
+
+      {/* Modal */}
+      {selectedProject && (
+        <Modal
+          isOpen={isModalOpen}
+          onClose={() => setIsModalOpen(false)}
+          title={selectedProject.title}
+        >
+          <div className="text-center p-4">
+            <p className="text-sm mb-4">{selectedProject.description}</p> {/* description */}
+            <img
+              src={selectedProject.image}
+              alt={selectedProject.title}
+              className="rounded-lg w-full max-h-[300px] object-cover mx-auto"
+            />
+          </div>
+        </Modal>
+      )}
     </section>
-  );
-}
-
-interface ProjectCardProps {
-  project: Project;
-  i: number;
-}
-
-function ProjectCard({ project, i }: ProjectCardProps) {
-  return (
-    <motion.div
-      style={card}
-      initial="offscreen"
-      whileInView="onscreen"
-      viewport={{ once: true, amount: 0.7 }}
-      variants={cardVariants}
-      custom={i}
-      whileHover={{
-        rotateX: 5,
-        rotateY: 10,
-        scale: 1.05,
-        boxShadow: '0 8px 15px rgba(46, 125, 50, 0.4)', // softer shadow without glow
-        transition: { duration: 0.3 },
-      }}
-    >
-      <h3 style={title}>{project.title}</h3>
-      <p style={description}>{project.description}</p>
-    </motion.div>
   );
 }
 
 const cardVariants: Variants = {
   offscreen: {
     opacity: 0,
-    scale: 0.8,
-    rotateX: 15,
-    rotateY: -15,
+    scale: 0.9,
+    rotateX: 10,
+    rotateY: -10,
   },
   onscreen: (i) => ({
     opacity: 1,
@@ -81,41 +124,4 @@ const cardVariants: Variants = {
       damping: 12,
     },
   }),
-};
-
-/** Styles **/
-
-const container: React.CSSProperties = {
-  maxWidth: 700,
-  margin: '3rem auto',
-  padding: '0 1rem',
-  display: 'flex',
-  flexDirection: 'column',
-  gap: '2.5rem',
-  background: '#000000', // changed to black
-  borderRadius: '12px',
-};
-
-const card: React.CSSProperties = {
-  background: '#e6f2e6',
-  padding: '2rem',
-  borderRadius: '16px',
-  boxShadow: '0 8px 20px rgba(46, 125, 50, 0.3)', // subtle shadow
-  border: '4px solid #2e7d32',
-  cursor: 'pointer',
-  transformStyle: 'preserve-3d',
-};
-
-const title: React.CSSProperties = {
-  margin: 0,
-  fontSize: '1.75rem',
-  fontWeight: '700',
-  color: '#2e7d32',
-};
-
-const description: React.CSSProperties = {
-  marginTop: '0.5rem',
-  fontSize: '1rem',
-  color: '#2e7d32',
-  lineHeight: 1.5,
 };

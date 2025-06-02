@@ -4,8 +4,8 @@ import { motion } from "framer-motion";
 
 export default function AboutMe() {
   return (
-    <section id="about" className="bg-black py-20 px-4 text-green-100 border-b-2">
-      <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-12 items-stretch">
+    <section id="about" className="bg-black text-green-100 border-b-2 p-6">
+      <div className=" w-full mx-auto grid grid-cols-1 md:grid-cols-3 gap-12 items-stretch">
         {/* Left side - About Me and My Mission side by side */}
         <motion.div
           initial={{ opacity: 0, y: 50 }}
@@ -58,10 +58,9 @@ export default function AboutMe() {
           initial={{ scale: 0.95, opacity: 0 }}
           whileInView={{ scale: 1, opacity: 1 }}
           transition={{ duration: 0.8, delay: 0.3, ease: "easeOut" }}
-          viewport={{ once: true }}
           className="h-full"
         >
-          <div className="rounded-lg overflow-hidden w-full h-full shadow-xl">
+          <div className="overflow-hidden w-full h-full shadow-xl">
             <img
               src="/Images/lumber-84678.jpg"
               alt="Kayla in the forest"

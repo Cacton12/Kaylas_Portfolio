@@ -16,7 +16,6 @@ export default function Education() {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
-          viewport={{ once: true }}
           className="bg-neutral-900 rounded-xl p-6 shadow-lg"
         >
           <h3 className="text-2xl font-semibold">Diploma in Forest Technology</h3>

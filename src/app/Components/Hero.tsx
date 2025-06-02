@@ -1,6 +1,6 @@
 "use client";
 
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 
 export default function Hero() {
 
@@ -10,7 +10,6 @@ export default function Hero() {
     >
       {/* Background image container */}
       <div className="absolute inset-0 z-0">
-        <AnimatePresence mode="wait">
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
@@ -21,7 +20,6 @@ export default function Hero() {
               backgroundImage: `url(/Images/aerial-view-2604483.webp)`,
             }}
           />
-        </AnimatePresence>
 
         {/* Optional: add a dark overlay */}
         <div className="absolute inset-0 bg-black opacity-50" />

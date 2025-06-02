@@ -62,7 +62,7 @@ export default function AboutMe() {
         >
           <div className="overflow-hidden w-full h-full shadow-xl">
             <img
-              src="/Images/lumber-84678.jpg"
+              src="/Images/lumber-84678.webp"
               alt="Kayla in the forest"
               className="w-full h-full object-cover"
             />

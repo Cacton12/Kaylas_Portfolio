@@ -18,7 +18,7 @@ export default function Hero() {
             transition={{ duration: 0.8 }}
             className="absolute inset-0 bg-cover bg-center"
             style={{
-              backgroundImage: `url(/Images/aerial-view-2604483.jpg)`,
+              backgroundImage: `url(/Images/aerial-view-2604483.webp)`,
             }}
           />
         </AnimatePresence>

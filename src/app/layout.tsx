@@ -1,6 +1,8 @@
+
 import type { Metadata } from "next";
 import { Raleway } from "next/font/google";
 import "./globals.css";
+import { PostHogProvider } from "./Components/PostHogProvider";
 
 const raleway = Raleway({
   variable: "--font-raleway",
@@ -24,7 +26,10 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${raleway.variable} antialiased`}>
-        {children}
+        {/* Wrap the entire app in PostHogProvider to initialize analytics */}
+        <PostHogProvider>
+          {children}
+        </PostHogProvider>
       </body>
     </html>
   );

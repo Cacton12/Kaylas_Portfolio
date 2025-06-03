@@ -19,6 +19,7 @@ export default function AboutMe() {
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 1 }}
           >
+            
             <h2 className="text-3xl md:text-4xl font-bold mb-4 border-b-4 border-green-600 inline-block pb-2">
               About Me
             </h2>
